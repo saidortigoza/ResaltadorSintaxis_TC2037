@@ -9,63 +9,63 @@
 
 (define file-br (string-replace file-gt "\n" " <br> "))
 
-(define is-id? ;;(string-append (string-append (string-append "<span class=id>" (car lst)) "</span>") aux-file)
+(define is-id?
   (lambda (atom)
     (cond
       [(null? atom) #f]
       [(regexp-match-exact? #rx"[a-zA-Z_]+[a-zA-Z_0-9]*;?" atom) #t]
       [else #f])))
 
-(define is-int? ;;(string-append (string-append (string-append "<span class=int>" (car lst)) "</span>") aux-file)
+(define is-int?
   (lambda (atom)
     (cond
       [(null? atom) #f]
       [(regexp-match-exact? #rx"[0-9]+;?" atom) #t]
       [else #f])))
 
-(define is-real? ;;(string-append (string-append (string-append "<span class=real>" (car lst)) "</span>") aux-file)
+(define is-real?
   (lambda (atom)
     (cond
       [(null? atom) #f]
       [(regexp-match-exact? #rx"[+-]?[0-9]+[.][0-9]+([eE][+-]?[0-9]+)?;?" atom) #t]
       [else #f])))
 
-(define is-op? ;;(string-append (string-append (string-append "<span class=op>" (car lst)) "</span>") aux-file)
+(define is-op?
   (lambda (atom)
     (cond
       [(null? atom) #f]
-      [(regexp-match-exact? #rx"[a-zA-Z]*([+][+]|[+]|[-][-]|[-]|[*]|[%]|[/]|[\\^]|[!][=]|&lt&lt|&gt&gt|&gt=|&lt=|[=][=]|&lt|&gt|=)" atom) #t]
+      [(regexp-match-exact? #rx"[+][+]|[+]|[-][-]|[-]|[*]|[%]|[/]|[\\^]|[!][=]|&lt&lt|&gt&gt|&gt=|&lt=|[=][=]|&lt|&gt|=" atom) #t]
       [else #f])))
 
-(define is-comment? ;;(string-append (string-append (string-append "<span class=comment>" (car lst)) "</span>") aux-file)
+(define is-comment?
   (lambda (atom)
     (cond
       [(null? atom) #f]
       [(regexp-match-exact? #rx"[/][/][ a-zA-Z_0-9]*;?" atom) #t]
       [else #f])))
 
-(define is-string? ;;(string-append (string-append (string-append "<span class=string>" (car lst)) "</span>") aux-file)
+(define is-string?
   (lambda (atom)
     (cond
       [(null? atom) #f]
       [(regexp-match-exact? #rx"\\?*[\"][ a-zA-Z_0-9]*\\?*[\"];?" atom) #t]
       [else #f])))
 
-(define is-reserved? ;;(string-append (string-append (string-append "<span class=reserved>" (car lst)) "</span>") aux-file)
+(define is-reserved?
   (lambda (atom)
     (cond
       [(null? atom) #f]
       [(regexp-match-exact? #rx"if|else|while|for|do|const|int|float|string|char|void|return|continue|using|namespace|break|bool|static|new|null|false|switch|this|throw|case|true|catch|try|class|public|virtual|double|cout|cin|long;?" atom) #t]
       [else #f])))
 
-(define is-punctuation? ;;(string-append (string-append (string-append "<span class=punctuation>" (car lst)) "</span>") aux-file)
+(define is-punctuation?
   (lambda (atom)
     (cond
       [(null? atom) #f]
       [(regexp-match-exact? #rx"\\[|\\]|\\{|\\}|\\(|\\)|\\[\\]|\\{\\}|\\(\\);*" atom) #t]
       [else #f])))
 
-(define is-include? ;;(string-append (string-append (string-append "<span class=include>" atom) "</span>") aux-file)
+(define is-include?
   (lambda (atom)
     (cond
       [(null? atom) #f]
