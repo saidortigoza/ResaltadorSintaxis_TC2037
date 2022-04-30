@@ -1,0 +1,41 @@
+body {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 12px;
+    font-weight: 400;
+  }
+  
+  .include {
+    color: blueviolet;
+  }
+  
+  .id {
+      color: darkgreen;
+  }
+
+  .reserved {
+    color: red;
+  }
+  
+  .int {
+    color: lightseagreen;
+  }
+  
+  .real {
+    color: lightseagreen;
+  }
+  
+  .string {
+    color: black;
+  }
+
+  .op {
+      color: orange;
+  }
+
+  .comment {
+      color: gray;
+  }
+
+  .punctuation {
+      color: lightcoral;
+  }
